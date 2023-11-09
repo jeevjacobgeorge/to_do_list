@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="table-container">
+    <table class="task-table">
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.content}}</td>
+            <td>{{task.date_created.date()}}</td>
+            <td>
+                <a href="/delete/{{task.id}}" class="action-link">
+                    <button class="action-button">Mark done</button>
+                </a>
+                <a href="/update/{{task.id}}" class="action-link">
+                    <button class="action-button">Update</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<form action="/" method="post" class="task-form">
+    <input type="text" name="content" id="content" class="task-input" placeholder="Add a new task">
+    <input type="submit" value="Add Task" class="task-button">
+</form>
+
+
+{% endblock %}
