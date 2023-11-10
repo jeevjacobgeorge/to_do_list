@@ -15,16 +15,16 @@ Before you get started, make sure you have the following installed:
 
 1. Clone this repository to your local machine.
 ```bash
-git clone https://github.com/yourusername/flask-task-master.git
+git clone https://github.com/jeevjacobgeorge/to_do_list/
 ```
 2.Navigate to the project directory:
 ```bash
-   cd flask-task-master
+   cd to_do_list
 ```
 3.Create a virtual environment (recommended but optional):
 ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+   python3 -m venv env
+   source env/bin/activate
 ```
 4.Install project dependencies:
 ```bash
