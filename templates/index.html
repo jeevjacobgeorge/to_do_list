@@ -46,12 +46,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
         let input = document.getElementById('search');
-        input.addEventListener('keyup', function() {
+        input.addEventListener('keydown', function() {
                 $.get('/search?q=' + input.value,function(tasks_json){
 
                     let html = '';
                     for (let obj in tasks_json){
-                        html += "<li>" + tasks_json[obj].content + "</li>";
+                        html += "<li>" + tasks_json[obj].content + " -    Created on: " + tasks_json[obj].date_created + "</li>";
                     }
                     document.getElementById('ul').innerHTML = html
                 })
