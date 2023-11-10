@@ -40,15 +40,16 @@
     </form>
 </div>
 <div >
-    <input autocomplete="off" placeholder="Search task" class="task-input" type="text" name="q" id="search">
+    <input autocomplete="off" placeholder="Search task" class="task-input" type="search" name="q" id="search">
+    
     <ul id="ul"></ul>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <div class="close-button" onclick="clearSearch()">x</div>
     <script>
         let input = document.getElementById('search');
         input.addEventListener('keydown', function() {
                 $.get('/search?q=' + input.value,function(tasks_json){
-
                     let html = '';
                     for (let obj in tasks_json){
                         html += "<li>" + tasks_json[obj].content + " -    Created on: " + tasks_json[obj].date_created + "</li>";
@@ -56,6 +57,12 @@
                     document.getElementById('ul').innerHTML = html
                 })
         })
+        function clearSearch() {
+        document.getElementById('search').value = '';
+        document.getElementById('ul').innerHTML = '';
+       
+    }
+
     </script>
 </div>
 {% endblock %}

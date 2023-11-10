@@ -1,10 +1,19 @@
 /* Styles for the Table */
+body{
+    background: url("images/sticky_notes.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
 .task-table {
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    margin: 20px;
+    border-radius: 9px;
+    margin: 25px;
 }
 
 th, td {
@@ -107,4 +116,18 @@ tr:nth-child(even) {
     list-style-type: none; /* Remove default list styling */
     padding: 0; /* Remove default padding */
     margin: 0; /* Remove default margin */
+}
+.close-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-weight: bold;
+    display: none;
+}
+
+.search-container:hover .close-button {
+    display: block;
 }
