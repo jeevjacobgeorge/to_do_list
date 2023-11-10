@@ -1,4 +1,4 @@
-from flask import Flask,redirect,render_template,request,url_for
+from flask import Flask,redirect,render_template,request,url_for,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -14,7 +14,9 @@ class Todo(db.Model):
     date_created= db.Column(db.DateTime,default= datetime.utcnow)
 
     def __repr__(self):
-        return '<Task %r>' % self.id        #python 
+        return '<Task %r>' % self.id 
+    def as_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
 with app.app_context():
     db.create_all()
@@ -59,7 +61,15 @@ def update(id):
     else:
         return render_template('update.html',task=task)
 
-    
+@app.route('/search')    
+def search():
+    q = request.args.get('q')
+    tasks = Todo.query.filter(Todo.content.contains(q)).all()
+    # Convert Todo objects to dictionaries
+    tasks_list = [task.as_dict() for task in tasks]
+    return jsonify(tasks_list)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
