@@ -19,20 +19,20 @@ git clone https://github.com/jeevjacobgeorge/to_do_list/
 ```
 2.Navigate to the project directory:
 ```bash
-   cd to_do_list
+cd to_do_list
 ```
 3.Create a virtual environment (recommended but optional):
 ```bash
-   python3 -m venv env
-   source env/bin/activate
+python3 -m venv env
+source env/bin/activate
 ```
 4.Install project dependencies:
 ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 ## Running the Application
 ```bash
-   flask run
+flask run
 ```
 This will start the development server, and you can access the application in your web browser at http://localhost:5000.
 
